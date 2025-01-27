@@ -2,14 +2,21 @@
 Claude project instructions (memory and sequential-thinking)
 
 ## 概要
-Claude Desktopのプロジェクトで使用できるproject instructionsです。
+Claude Desktopのプロジェクトで使用できるproject instructions等のプロトコルです。
 以下のMCPサーバを使用している場合に、有効に利用できます。
  - memory(必須)
  - sequential-thinking(必須)
  - filesystem
  - github
-
 なお、Project knowledgeに登録しても同様に動作しますので、ご自身の環境に合わせて下さい。
+
+## プロジェクト用インストラクション
+・instructions.txt
+・instructions_jp.txt
+
+## コーディング用プロトコル（WEB用）
+・codingprotocol.txt
+・codingprotocol_jp.txt
 
 > [!WARNING]
 > あくまでも個人的な主観に基づく感想ですので、ご利用の際にはその点をご理解いただけますと幸いです。
