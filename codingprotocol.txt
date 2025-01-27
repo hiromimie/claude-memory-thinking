@@ -1,271 +1,193 @@
-# Enhanced Web Development Protocol
+# Extended website development protocol
 
-## 1. Core Configuration
+## 1. Core configuration
 
-### 1.1 Development Process Principles
-- Adherence to Clean Code principles
-- Security as top priority
+### 1.1 Development process principles
+- Adherence to clean code principles
+- Security first
 - Performance optimization
 - Maintainable code design
 - Team-oriented implementation
-- Coding standards compliance
+- Compliance with coding standards
 - Quality assurance through simulation
+- Test-driven development (TDD) practice
+- Continuous integration/delivery
+- Proactive management of technical debt
 
-### 1.2 System Architecture Components
+### 1.2 System architecture components
 
-#### Cache Management System
-- Implementation of adaptive caching strategies
-- Cache hierarchy optimization
-- Cache performance monitoring
-- Intelligent prefetching implementation
-- Cache coherency maintenance
-
-#### Performance Monitoring
+#### Performance monitoring
 - Response time tracking
 - Resource utilization monitoring
 - Usage pattern analysis
 - Performance report generation
-- Optimization opportunity identification
+- Identification of optimization opportunities
+- Real-time metrics collection
+- User experience metrics
 
-#### Search Optimization
+#### Search optimization
 - Context-aware search implementation
-- Semantic search capabilities
+- Semantic search functionality
 - Search performance optimization
-- Integration with caching system
-- Fuzzy matching support
+- Fuzzy match support
+- Multilingual search support
+- Search result personalization
 
-## 2. Mandatory Pre-Implementation Verification
+#### Microservices architecture
+- Service decomposition strategy
+- API gateway design
+- Inter-service communication
+- Fault recovery mechanism
+- Scaling strategy
+- Monitoring integration
 
-### 2.1 Source File Analysis
-```javascript
-// File reading example
-const fileContent = await window.fs.readFile('path/to/file', { encoding: 'utf8' });
-console.log(fileContent);
-```
+## 2. Required pre-implementation verification
 
+### 2.1 Source file analysis
 - Detailed analysis of existing files
 - Module dependency verification
-- Coding standards compliance check
-- Cache impact assessment
+- Coding standard compliance check
+- Cyclomatic complexity evaluation
+- Code metrics measurement
+- Security vulnerability scan
 
-### 2.2 Impact Assessment
+### 2.2 Impact assessment
 - Identification of areas requiring changes
 - Code dependency verification
 - Change impact scope evaluation
-- Refactoring necessity assessment
+- Refactoring necessity evaluation
 - Performance impact analysis
+- Security risk assessment
+- User experience impact
 
-### 2.3 Compatibility Verification
+### 2.3 Compatibility verification
 - Interface definition review
 - API specification consistency check
-- Process flow validation
-- Existing functionality impact assessment
-- Cache coherency verification
+- Process flow verification
+- Existing function impact evaluation
+- Cross browser compatibility
+- Mobile compatibility
+- Accessibility compliance
 
-## 3. Project Information Format
+## 3. Project information format
 
-```markdown
-# Project Overview
-- Project Name: [name]
-- Development Period: [duration]
-- Team Size: [number]
-- Cache Requirements: [specifications]
+# Project overview
+- Project name: [Name]
+- Development period: [Period]
+- Team size: [Number of people]
+- Architecture requirements: [Specifications]
 
-# Development Environment
-- Language: [programming language]
-- Framework: [framework name]
+# Development environment
+- Language: [Programming language]
+- Framework: [Framework name]
 - Database: [DB type]
-- Development Tools: [tool list]
-- Monitoring Tools: [tool list]
+- Development tool: [Tool list]
+- Monitoring tool: [Tool list]
+- CI/CD tool: [Tool list]
 
 # Requirements
-- Functional Requirements: [specific features]
-- Non-functional Requirements: [constraints]
-- Performance Targets: [metrics]
-```
+- Functional requirements: [Specific functions]
+- Non-functional requirements: [Constraints]
+- Performance goals: [Metrics]
+- Security requirements: [Criteria]
 
-## 4. Code Generation Standards
+## 4. Code generation criteria
 
-### 4.1 Quality Criteria
-1. Code Readability
-   - Framework-specific naming convention compliance
-   - Clear documentation
-   - Consistent structure
+### 4.1 Quality criteria
+1. Code readability
+- Compliance with framework-specific naming rules
+- Clear documentation
+- Consistent structure
+- Appropriate comments
+- Self-documenting code
 
 2. Maintainability
-   - Modular design
-   - Loose coupling
-   - Testability
+- Modular design
+- Loose coupling
+- Testability
+- Minimization of dependencies
+- Elimination of code duplication
 
 3. Security
-   - Input validation
-   - Proper authentication/authorization
-   - Secure communications
+- Input validation
+- Appropriate authentication/authorization
+- Secure communication
+- XSS/CSRF countermeasures
+- SQL injection prevention
 
 4. Performance
-   - Efficient algorithms
-   - Resource optimization
-   - Scalability
+- Efficient algorithms
+- Resource optimization
+- Scalability
+- Leverage asynchronous processing
+- Optimize memory management
 
-## 5. Data Optimization
+## 5. Quality management framework
 
-### 5.1 Cache Strategy
-```javascript
-// Cache implementation example
-class CacheManager {
-    constructor() {
-        this.cache = new Map();
-        this.maxSize = 1000;
-    }
-
-    set(key, value, ttl = 3600) {
-        if (this.cache.size >= this.maxSize) {
-            this.evictOldest();
-        }
-        this.cache.set(key, {
-            value,
-            timestamp: Date.now(),
-            ttl
-        });
-    }
-
-    get(key) {
-        const item = this.cache.get(key);
-        if (!item) return null;
-        if (Date.now() - item.timestamp > item.ttl * 1000) {
-            this.cache.delete(key);
-            return null;
-        }
-        return item.value;
-    }
-
-    evictOldest() {
-        const oldest = [...this.cache.entries()]
-            .sort(([,a], [,b]) => a.timestamp - b.timestamp)[0];
-        if (oldest) this.cache.delete(oldest[0]);
-    }
-}
-```
-
-- Tiered caching implementation
-- Cache invalidation rules configuration
-- Cache hit ratio optimization
-- Cache performance monitoring
-- Cache warming strategy implementation
-
-### 5.2 Performance Metrics
-- KPI definition
-- Monitoring system implementation
-- Resource utilization tracking
-- Performance report generation
-- Optimization opportunity identification
-
-### 5.3 Search Enhancement
-```javascript
-// Search implementation example
-class SearchEngine {
-    constructor(data) {
-        this.data = data;
-        this.index = new Map();
-        this.buildIndex();
-    }
-
-    buildIndex() {
-        this.data.forEach((item, id) => {
-            const tokens = this.tokenize(item.content);
-            tokens.forEach(token => {
-                if (!this.index.has(token)) {
-                    this.index.set(token, new Set());
-                }
-                this.index.get(token).add(id);
-            });
-        });
-    }
-
-    search(query) {
-        const tokens = this.tokenize(query);
-        const results = tokens
-            .map(token => this.index.get(token) || new Set())
-            .reduce((a, b) => new Set([...a].filter(x => b.has(x))));
-        return Array.from(results)
-            .map(id => this.data[id])
-            .sort((a, b) => b.relevance - a.relevance);
-    }
-
-    tokenize(text) {
-        return text.toLowerCase()
-            .split(/\W+/)
-            .filter(token => token.length > 2);
-    }
-}
-```
-
-- Efficient search algorithm implementation
-- Query performance optimization
-- Context search feature enablement
-- Advanced filtering support
-- Search index maintenance
-
-## 6. Quality Control Framework
-
-### Monitoring and Analytics
+### Monitoring and analysis
 - System performance tracking
-- Cache efficiency monitoring
 - Usage pattern analysis
 - Performance report generation
-- Optimization opportunity identification
+- Identify optimization opportunities
+- User behavior analysis
+- Error tracking and analysis
+- Security monitoring
 
-### Continuous Improvement
-- Regular performance reviews
-- Cache optimization
-- Search enhancement
-- System scaling strategies
+### Continuous improvement
+- Periodic performance reviews
+- System scaling strategy
 - Resource optimization
+- Code quality metrics
+- Technical debt management
+- Architecture evolution
+- Team capability improvement
 
-## 7. Review Checklist
-- [ ] Requirements alignment
-- [ ] Coding standards compliance
+## 6. Review checklist
+- [ ] Alignment with requirements
+- [ ] Coding standard compliance
 - [ ] Security measures implementation
 - [ ] Performance optimization
-- [ ] Cache strategy appropriateness
-- [ ] Search functionality efficiency
+- [ ] Search function efficiency
 - [ ] Test coverage
-- [ ] Documentation completeness
+- [ ] Document completeness
 - [ ] Simulation execution
-- [ ] Issue resolution verification
+- [ ] Problem resolution verification
+- [ ] Accessibility support
+- [ ] Mobile-friendly
+- [ ] SEO-optimized
 
-## 8. Best Practices
-- SOLID principles application
-- Design pattern utilization
-- Efficient caching strategies
+## 7. Best practices
+- Apply SOLID principles
+- Use design patterns
 - Optimized search implementation
 - Continuous integration
-- Code review execution
-- Technical documentation maintenance
+- Perform code reviews
+- Maintain technical documentation
 - Performance monitoring
 - Thorough simulation
+- Security-first development
+- Facilitate team collaboration
 
-## 9. Anti-patterns
+## 8. Anti-patterns
 - Excessive complexity
 - Improper exception handling
-- Security vulnerability neglect
-- Inefficient caching
+- Ignoring security vulnerabilities
 - Unoptimized search
 - Insufficient testing
-- Inefficient resource usage
-- Monitoring absence
-- Simulation omission
+- Inefficient resource use
+- Lack of monitoring
+- Omitting simulations
+- Lack of documentation
+- Ignoring technical debt
 
-## 10. Usage Guidelines
-1. Project information input
-2. Specific requirements presentation
-3. Additional information provision as needed
-4. Cache strategy determination
-5. Search requirements definition
-6. Simulation execution
-7. Performance verification
-8. Issue identification and resolution
-9. Code review request
-10. Improvement implementation and verification
-
-This protocol supports high-quality web application development. Please provide additional detailed requirements or constraints as needed.
+## 9. Usage guidelines
+1. Enter project information
+2. State specific requirements
+3. Provide additional information as needed
+4. Determine test strategy
+5. Define search requirements
+6. Run simulations
+7. Performance validation
+8. Identify and resolve issues
+9. Request code reviews
+10. Implement and verify improvements
