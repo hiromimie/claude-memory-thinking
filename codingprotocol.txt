@@ -95,32 +95,46 @@
 
 ### 4.1 Quality criteria
 1. Code readability
-- Compliance with framework-specific naming rules
-- Clear documentation
-- Consistent structure
-- Appropriate comments
-- Self-documenting code
+   - Compliance with framework-specific naming rules
+   - Clear documentation
+   - Consistent structure
+   - Appropriate comments
+   - Self-documenting code
 
 2. Maintainability
-- Modular design
-- Loose coupling
-- Testability
-- Minimization of dependencies
-- Elimination of code duplication
+   - Modular design
+   - Loose coupling
+   - Testability
+   - Minimization of dependencies
+   - Code duplication elimination
 
 3. Security
-- Input validation
-- Appropriate authentication/authorization
-- Secure communication
-- XSS/CSRF countermeasures
-- SQL injection prevention
+   - Input validation
+   - Appropriate authentication/authorization
+   - Secure communication
+   - XSS/CSRF countermeasures
+   - SQL injection prevention
 
 4. Performance
-- Efficient algorithms
-- Resource optimization
-- Scalability
-- Leverage asynchronous processing
-- Optimize memory management
+   - Efficient algorithms
+   - Resource optimization
+   - Scalability
+   - Leverage asynchronous processing
+   - Optimize memory management
+
+### 4.2 Simulation and verification criteria
+1. Internal simulation
+   - Mandatory verification process after code generation
+   - Operation verification in multiple scenarios
+   - Edge case verification
+   - Performance verification
+   - Security verification
+
+2. Issue handling
+   - Alternative approach consideration upon error detection
+   - Evaluation of different implementation methods
+   - Comparative analysis of solutions
+   - Optimal solution selection
 
 ## 5. Quality management framework
 
@@ -165,6 +179,10 @@
 - Maintain technical documentation
 - Performance monitoring
 - Thorough simulation
+  - Mandatory internal verification after code generation
+  - Multiple approach consideration
+  - Re-implementation upon issues
+  - Continuous verification process
 - Security-first development
 - Facilitate team collaboration
 
@@ -186,7 +204,11 @@
 3. Provide additional information as needed
 4. Determine test strategy
 5. Define search requirements
-6. Run simulations
+6. Simulation execution
+   - Perform internal verification after code generation
+   - Verify operation and identify issues
+   - Consider alternative approaches for issues
+   - Execute re-implementation and re-verification
 7. Performance validation
 8. Identify and resolve issues
 9. Request code reviews
